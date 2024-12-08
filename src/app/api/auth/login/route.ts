@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
       expiresIn: "1d",
     });
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       message: "Login Successful",
       token,
       data: {
@@ -41,6 +41,22 @@ export async function POST(request: NextRequest) {
         userType: user.userType,
       },
     });
+
+    response.cookies.set("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 86400,
+    });
+
+    response.cookies.set("userType", user.userType, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 86400,
+    });
+
+    return response;
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" },

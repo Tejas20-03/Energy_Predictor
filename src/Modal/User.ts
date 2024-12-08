@@ -25,6 +25,12 @@ const UserSchema = new mongoose.Schema({
     default: "general",
     required: true,
   },
+  companyCode: {
+    type: String,
+    required: function (this: { userType: string }) {
+      return this.userType === "admin";
+    },
+  },
   createdAt: {
     type: Date,
     default: Date.now,

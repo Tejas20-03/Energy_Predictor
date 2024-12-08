@@ -4,13 +4,19 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --color-sand: #f0e2c5;
+  --color-green-light: #18703e;
+  --color-green-dark: #2a5e3a;
+  --foreground: #18703e;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --color-sand: #f0e2c5;
+    --color-green-light: #18703e;
+    --color-green-dark: #2a5e3a;
+    --foreground: #f0e2c5;
   }
 }
 
