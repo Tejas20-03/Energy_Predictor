@@ -1,7 +1,7 @@
 {
-  "functions": {
-    "api/auth/*": {
-      "maxDuration": 30
+    "functions": {
+      "src/app/api/auth/**": {
+        "maxDuration": 30
+      }
     }
   }
-}
