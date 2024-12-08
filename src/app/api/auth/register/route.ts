@@ -1,9 +1,11 @@
 import User from "@/Modal/User";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import connectDB from "@/lib/db";
 
 export async function POST(request: NextRequest) {
   try {
+    await connectDB();
     const reqBody = await request.json();
     const { name, email, password, userType } = reqBody;
 
