@@ -35,6 +35,9 @@ export function LoginForm() {
 
       if (!res.ok) throw new Error(data.error || "Login failed");
 
+      document.cookie = `token=${data.token}; path=/`;
+      document.cookie = `userType=${data.data.userType}; path=/`;
+
       toast.success("Login successful! Redirecting...");
 
       router.push(

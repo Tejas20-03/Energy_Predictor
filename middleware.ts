@@ -7,12 +7,16 @@ export function middleware(request: NextRequest) {
   if (!token) {
     return NextResponse.redirect(new URL("/", request.url));
   }
-  if (
-    request.nextUrl.pathname.startsWith("/dashboard/admin") &&
-    userType !== "admin"
-  ) {
-    return NextResponse.redirect(new URL("/dashboard/general", request.url));
+  const path = request.nextUrl.pathname;
+
+  if (path.startsWith("/dashboard/admin") && userType !== "admin") {
+    return NextResponse.redirect(new URL("/404", request.url));
   }
+
+  if (path.startsWith("/dashboard/general") && userType !== "general") {
+    return NextResponse.redirect(new URL("/404", request.url));
+  }
+
   return NextResponse.next();
 }
 

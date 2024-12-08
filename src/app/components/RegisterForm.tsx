@@ -171,7 +171,7 @@ export function RegisterForm() {
             <input
               id="companyCode"
               name="companyCode"
-              type="text"
+              type="password"
               required={showCompanyCode}
               value={formData.companyCode}
               onChange={handleChange}
